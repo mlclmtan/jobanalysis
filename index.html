@@ -37,10 +37,8 @@
         </div>
 
         <div class="row d-flex justify-content-center">
-            <div class="col-md-6">
                 <button type="button" class="button btn btn-primary" id="refresh" onclick="refresh();">Refresh Data</button>
                 <button type="button" class="button btn btn-primary" id="in" onclick="datain();">今日輸入</button>
-            </div>
         </div>
     </div>
 
@@ -59,7 +57,7 @@
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            url: 'db.php',
+            url: 'testdb.php',
             data: {
                 'action': 'refresh'
             },
@@ -69,13 +67,11 @@
                 }
                 let v=[], r=[], a=[],d=[];
                 jsarr.forEach((element, index) => {
-                    console.log(element['vue']);
                     d[index] = element['d'];
                     v[index] = element['vue'];
                     r[index] = element['react'];
                     a[index] = element['angular'];
                 });
-                console.log(v);
 
                 //line
                 let ctxL = document.getElementById("lineChart").getContext('2d');
@@ -130,35 +126,20 @@
 
     let datain = () => { //get and insert must different function
         let test=1;
-        console.log('update');
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            url: 'db.php',
+            url: 'testdb.php',
             data: {
                 'action': 'datain'
             },
             success: function (jsarr) {
-                if (jsarr[0] == 'NO') {
+                
+                if (jsarr == null) {
+                    alert('Duplicate insert');
                     return;
                 }
-                console.log('success');
-                console.log(jsarr);
-                let v=[], r=[], a=[],d=[];
-                console.log(JSON.parse(jsarr));
-                jsarr = JSON.parse(jsarr);
-                jsarr.forEach((element, index) => {
-                    d[index] = element['d'];
-                    v[index] = element['vue'];
-                    r[index] = element['react'];
-                    a[index] = element['angular'];
-                });
-                console.log(v);
-
-                //line
-                let ctxL = document.getElementById("lineChart").getContext('2d');
-   
-
+                refresh();
             }
         });
     }
