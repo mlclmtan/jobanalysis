@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Framework</title>
+    <link rel="shortcut icon" href="jsfrmwk.png" type="image/x-icon">
 
     <style>
         .button:hover {background-color: #3e8e41}
@@ -57,7 +58,7 @@
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            url: 'testdb.php',
+            url: 'jsfrmwkdb.php',
             data: {
                 'action': 'refresh'
             },
@@ -129,7 +130,7 @@
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            url: 'testdb.php',
+            url: 'jsfrmwkdb.php',
             data: {
                 'action': 'datain'
             },
@@ -145,6 +146,13 @@
     }
 
     refresh();
+
+    window.setInterval(function(){ // Set interval for checking
+        var date = new Date(); // Create a Date object to find out what time it is
+        if(date.getHours() === 14){ // Check the time
+            datain();
+        }
+    }, 1800000); // Repeat every 60000 milliseconds (1 day)
 
 </script>
     
