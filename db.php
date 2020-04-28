@@ -1,5 +1,5 @@
 <?php
-    $conn = new mysqli('127.0.0.1','','','test');
+    $conn = new mysqli('127.0.0.1','','','');
     if($conn->connect_error){
         die("Connection failed: ".$conn->connect_error);
     }
@@ -33,10 +33,8 @@
     function datain(){
         $content = htmlspecialchars(file_get_contents("https://www.104.com.tw/jobs/search/?keyword=vue"));
         preg_match('/【(.*?)個工作機會/', $content, $vue);
-
         $content = htmlspecialchars(file_get_contents("https://www.104.com.tw/jobs/search/?keyword=react"));
         preg_match('/【(.*?)個工作機會/', $content, $react);
-
         $content = htmlspecialchars(file_get_contents("https://www.104.com.tw/jobs/search/?keyword=angular"));
         preg_match('/【(.*?)個工作機會/', $content, $angular);
 
@@ -51,7 +49,7 @@
                                             FROM   `web` 
                                             WHERE  CURDATE() = 
                                                     Date_format(`date`, "%Y/%m/%e")) ');
-                                                    
+
         $stmt->bind_param("iii", $vue[1], $react[1], $angular[1]);
         if (!$stmt->execute()) {
             $err = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
