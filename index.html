@@ -139,8 +139,11 @@
                 if (jsarr == null) {
                     alert('Duplicate insert');
                     return;
+                }else{
+                    document.querySelector('#chart').innerHTML = '';
+					document.querySelector('#chart').innerHTML='<canvas id="lineChart"></canvas>';
+                    refresh();
                 }
-                refresh();
             }
         });
     }
