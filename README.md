@@ -8,6 +8,6 @@ based on 104.com.tw
   - Vue
   - Angular
  
- **[Launch Live Preview](http://jobopp.mlclmtan.ga/)**
+ **[Live Preview](http://jobopp.mlclmtan.ga/)**
 
 ![graph](https://github.com/mlclmtan/jobanalysis/blob/master/jsfrmwkjobanalysis.jpg)
