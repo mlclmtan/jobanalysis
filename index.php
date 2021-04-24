@@ -28,9 +28,13 @@
 <body>
 
     <div class="container">
-        <div class="row justify-content-center my-5">
-            <h1>工作機會統計</h1>
-        </div>
+        <div class="row justify-content-center mt-5">
+	    <h1>工作機會統計</h1>		
+	</div>
+
+        <div class="row justify-content-center mb-5">
+<h6>Javascript Framework Job Vacancies based on <a href="https://www. 104.com.tw/">104.com.tw</a> (updated daily)</h6>
+</div>
         <div class="row d-flex justify-content-center">
             <div class="col-md-12">
                 <canvas id="lineChart"></canvas>
@@ -126,7 +130,6 @@
     
 
     let datain = () => { //get and insert must different function
-        let test=1;
         $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -149,6 +152,17 @@
     }
 
     refresh();
+
+    function makeReq(hr){
+        return new Promise((resolve,reject)=>{
+            console.log('waiting for 2pm');
+            if(hr==14){
+                resolve(1);
+            }else{
+                reject(0);
+            }
+        })
+    }
 
     window.setInterval(function(){ // Set interval for checking
         var date = new Date(); // Create a Date object to find out what time it is
