@@ -32,11 +32,11 @@
 
     function datain(){
         $content = htmlspecialchars(file_get_contents("https://www.104.com.tw/jobs/search/?keyword=vue"));
-        preg_match('/【(.*?)個工作機會/', $content, $vue);
+        preg_match('/－(.*?)個工作機會/', $content, $vue);
         $content = htmlspecialchars(file_get_contents("https://www.104.com.tw/jobs/search/?keyword=react"));
-        preg_match('/【(.*?)個工作機會/', $content, $react);
+        preg_match('/－(.*?)個工作機會/', $content, $react);
         $content = htmlspecialchars(file_get_contents("https://www.104.com.tw/jobs/search/?keyword=angular"));
-        preg_match('/【(.*?)個工作機會/', $content, $angular);
+        preg_match('/－(.*?)個工作機會/', $content, $angular);
 
         global $conn;
         $stmt = $conn->prepare('INSERT INTO `web` 
@@ -54,11 +54,11 @@
         if (!$stmt->execute()) {
             $err = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         }
-
+        
         $stmt->close();
         $conn->close();
 
-        echo json_encode($err);
+        echo json_encode(mysqli_affected_rows($conn));
     }
 
 ?>
