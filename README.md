@@ -1,8 +1,9 @@
 # Javascript Framework Job Analysis
 
-based on 104.com.tw
+Job vacancies based on 104.com.tw
 
 - Capture with php
+- CRON job daily update
 - Mainstream frameworks:
   - React
   - Vue
