@@ -9,6 +9,6 @@ Job vacancies based on 104.com.tw
   - Vue
   - Angular
  
- **[Live Preview](http://jobopp.mlclmtan.ga/)**
+ **[Live Preview](http://jobopp.malcolmtan.tech/)**
 
 ![graph](https://github.com/mlclmtan/jobanalysis/blob/master/jsfrmwkjobanalysis.jpg)
